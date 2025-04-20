@@ -1,4 +1,3 @@
-
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -72,7 +71,7 @@ def search_videos(request):
             'part': 'snippet',
             'q': query,
             'key': api_key,
-            'maxResults': 20,
+            'maxResults': 10,
             'type': 'video'
         }
         search_response = requests.get(search_url, params=search_params).json()
@@ -99,6 +98,3 @@ def search_videos(request):
                 videos.append(video_data)
 
     return render(request, 'videos/search.html', {'videos': videos})
-
-
-# Create your views here.
